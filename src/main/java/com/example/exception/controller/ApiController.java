@@ -24,4 +24,6 @@ public class ApiController {
         System.out.println(user);
         return user;
     }
+
+    // exception 사례 알아보기
 }
