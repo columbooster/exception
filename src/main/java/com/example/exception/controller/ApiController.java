@@ -26,4 +26,5 @@ public class ApiController {
     }
 
     // exception 사례 알아보기
+    // Spring legacy  와 spring boot 비교
 }
