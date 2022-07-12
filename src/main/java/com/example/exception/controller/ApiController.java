@@ -27,5 +27,8 @@ public class ApiController {
 
     // exception 사례 알아보기
     // Spring legacy  와 spring boot 비교
-    //어노테이션 추가
+    //  어노테이션 추가
+
+
+    // dependency 작성 차이법 ( legacy, boot)
 }
