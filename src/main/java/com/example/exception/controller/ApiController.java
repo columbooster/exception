@@ -46,4 +46,6 @@ public class ApiController {
     // dependency 작성 차이법 ( legacy, boot)
 
     // Postman 활용해보기
+
+    // 초기환경설정 및 DB연동
 }
