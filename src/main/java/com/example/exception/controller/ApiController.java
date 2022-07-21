@@ -55,4 +55,6 @@ public class ApiController {
     //login 작업
     int b =5;
     //보드 작업
+    int c = 3;
+    //보드 작업 2nd
 }
