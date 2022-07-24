@@ -38,4 +38,5 @@ public class User {
                 ", age=" + age +
                 '}';
     }
+    // push 연습
 }
