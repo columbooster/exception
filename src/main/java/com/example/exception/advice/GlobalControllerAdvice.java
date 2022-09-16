@@ -25,5 +25,5 @@ public class GlobalControllerAdvice {
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
-
+    // 버젼 관리
 }
