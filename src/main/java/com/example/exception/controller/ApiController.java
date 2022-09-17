@@ -3,17 +3,28 @@ package com.example.exception.controller;
 import com.example.exception.dto.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @RestController
 @RequestMapping("/api/user")
+@Validated
 public class ApiController {
 
     @GetMapping("")
-    public User get(@RequestParam(required = false) String name,@RequestParam(required = false) Integer age) {
+    public User get(
+            @Size(min = 2)
+            @RequestParam String name,
+
+            @NotNull
+            @Min(1)
+            @RequestParam Integer age) {
         User user = new User();
         user.setName(name);
         user.setAge(age);
@@ -37,24 +48,4 @@ public class ApiController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 
-
-    // exception 사례 알아보기
-    // Spring legacy  와 spring boot 비교
-    //  어노테이션 추가
-
-
-    // dependency 작성 차이법 ( legacy, boot)
-
-    // Postman 활용해보기
-
-    // 초기환경설정 및 DB연동
-
-    // listener 설정
-    //new dev branch
-    int a = 10;
-    //login 작업
-    int b =5;
-    //보드 작업
-    int c = 3;
-    //보드 작업 2nd
 }
