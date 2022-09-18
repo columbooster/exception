@@ -58,6 +58,14 @@ public class ApiControllerAdvice {
     @ExceptionHandler(value = MissingServletRequestParameterException.class)
     public ResponseEntity MissingServletRequestParameterException(MissingServletRequestParameterException e){
 
+        String fieldName = e.getParameterName();
+        String fieldType = e.getParameterType();
+        String invalidValue = e.getMessage();
+
+        System.out.println(fieldName);
+        System.out.println(fieldType);
+        System.out.println(invalidValue);
+
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 
