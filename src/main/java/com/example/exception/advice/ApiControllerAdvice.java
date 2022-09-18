@@ -4,6 +4,8 @@ package com.example.exception.advice;
 import com.example.exception.controller.ApiController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -23,6 +25,22 @@ public class ApiControllerAdvice {
 
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     public ResponseEntity methodArgumentNotValidException(MethodArgumentNotValidException e){
+
+        BindingResult bindingResult = e.getBindingResult();
+
+        bindingResult.getAllErrors().forEach(error -> {
+
+            FieldError field = (FieldError) error;
+
+            String fieldName = field.getField();
+            String message = field.getDefaultMessage();
+            String value = field.getRejectedValue().toString();
+
+            System.out.println(("-------------"));
+            System.out.println(fieldName);
+            System.out.println(message);
+            System.out.println(value);
+        });
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
