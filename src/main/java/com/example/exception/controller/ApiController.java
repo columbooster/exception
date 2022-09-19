@@ -29,23 +29,14 @@ public class ApiController {
         user.setName(name);
         user.setAge(age);
 
-        int a = 10+age;
-
         return user;
     }
 
     @PostMapping("")
     public User post(@Valid @RequestBody User user) {
-
         System.out.println(user);
         return user;
     }
 
-
-    @ExceptionHandler(value = MethodArgumentNotValidException.class)
-    public ResponseEntity methodArgumentNotValidException(MethodArgumentNotValidException e){
-        System.out.println("api controller");
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-    }
 
 }
